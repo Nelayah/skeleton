@@ -1,0 +1,35 @@
+{
+  "name": "cli-demo",
+  "version": "1.0.0",
+  "description": "cli demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "skeleton": "bin/skeleton.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nelayah/CLI-demo.git"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "hayalen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nelayah/CLI-demo/issues"
+  },
+  "homepage": "https://github.com/Nelayah/CLI-demo#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.19.0",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@types/node": "^11.11.0",
+    "@types/ramda": "^0.26.1",
+    "typescript": "^3.3.3333"
+  }
+}
