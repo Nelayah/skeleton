@@ -1,10 +1,17 @@
 {
 	"csb": {
-		"name": "CSB 模板",
-		"desc": "CSB 模板初始化"
+		"keyword": "csb",
+		"name": "CSB 脚手架",
+		"desc": "基于 cir-framework 实现的CSB平台服务前端工程。由信息中心前端团队定制开发和维护。"
+	},
+	"public-mobile": {
+		"keyword": "public-mobile",
+		"name": "公共系统部移动端脚手架",
+		"desc": "基于 vue 开发和定制的移动端脚手架。由信息中心第一帅竭力维护，深受公共系统一部热赞。"
 	},	
-	"recruitment3.0": {
-		"name": "招聘3.0",
-		"desc": "招聘3.0系统"
+	"recruitment": {
+		"keyword": "recruitment",
+		"name": "人力资源域系统脚手架",
+		"desc": "人力域前端开发，基于员工个人中心、招聘管理系统和面试官系统模型抽取出来的脚手架。深受人力域好评。"
 	}
 }
