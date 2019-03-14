@@ -21,6 +21,15 @@ const failLoading = () => {
   spinner.fail('fail _(¦3」∠)_  \n');
 }
 
+const tips = `
+【注意事项】
+脚手架初始化前，请阅读以下内容：
+1、请确保拥有 gitlab 上 csb 项目访问权限
+2、在 http://conf.gz.cvte.cn 配置中心初始化配置
+3、如要开通单点登录功能，请提前找运维进行域名授权
+`;
+
+
 const npmQ = [
   {
     type: 'input',
@@ -72,7 +81,45 @@ const apolloQ = [
     message: "clientIp:"
   }
 ];
-
+const serverQ = [
+  {
+    type: 'input',
+    name: 'systemName',
+    message: "systemName:",
+    default: () => 'csb'
+  },
+  {
+    type: 'input',
+    name: 'domain',
+    message: "domain:",
+    default: () => 'http://splendour.cvteapi.com'
+  },
+  {
+    type: 'confirm',
+    message: '是否门户单点登录',
+    name: 'loginWith4A'
+  },
+  {
+    type: 'confirm',
+    message: '是否门户单点登录',
+    name: 'loginWithOp'
+  },
+  {
+    type: 'confirm',
+    message: '是否本地开发',
+    name: 'loginForDev'
+  },
+  {
+    type: 'confirm',
+    message: '标志是否默认开启 node 端请求校验',
+    name: 'requestAuthCheck'
+  },
+  {
+    type: 'confirm',
+    message: '是否开启 CSRF token 校验',
+    name: 'needCSRF'
+  }
+];
 
 class Script {
   private dir = undefined;
@@ -101,6 +148,7 @@ class Script {
       log(JSON.stringify(answers, null, '  '));
       pkg.repository.url = answers.repositoryUrl;
       delete answers.repositoryUrl;
+      delete answers.isConfirm;
       pkg = {...pkg, ...answers};
       fs.writeFileSync(pkgDir, JSON.stringify(pkg, null, 2));
       if (pkg.repository.url !== defaultGitUrl) {
@@ -136,16 +184,44 @@ class Script {
     inquirer.prompt(apolloQ).then(answers => {
       log(JSON.stringify(answers, null, '  '));
       const tpl = fs.readFileSync(path.join(__dirname, 'file/startup.tpl'), 'utf8');
-      const newTpl = tpl.replace(/\{\{([^\}]+)\}\}/g, (match, key) => answers[key.trim()] || match);
-      console.log(newTpl);
+      const newTpl = tpl.replace(/\{\{([^\}]+)\}\}/g, (match, key) => answers[key.trim()] || '');
+      fs.writeFileSync(path.join(this.dir, 'startup.js'), newTpl);
+      this.initServer();
     });
-    
+  }
+  // * 5.server.js init
+  private initServer = () => {
+    log('开始初始化 server.js 配置...');
+    inquirer.prompt(serverQ).then(answers => {
+      log(JSON.stringify(answers, null, '  '));
+      const tpl = fs.readFileSync(path.join(__dirname, 'file/server.tpl'), 'utf8');
+      const newTpl = tpl.replace(/\{\{([^\}]+)\}\}/g, (match, key) => {
+        if (answers[key.trim()] === '') return '';
+        return answers[key.trim()] || false;
+      });
+      fs.writeFileSync(path.join(this.dir, 'config/server.js'), newTpl);
+      this.success();
+    });
+  }
+  // * 6.success
+  private success = () => {
+    // shell.exec(`node ${path.join(__dirname, 'file/success/index.js')}`);
+    log(`配置已完成`)
+    log(`Enjoy yourself!`)
   }
   init() {
-    // this.gitClone();
+    inquirer.prompt([{
+      type: 'confirm',
+      name: 'isConfirm',
+      message: tips
+    }]).then(answers => {
+      if (answers.isConfirm) this.gitClone();
+    });
     // this.initPkg();
     // this.installPkg();
-    this.initApolloConfig();
+    // this.initApolloConfig();
+    // this.initServer();
+    // this.success();
   }
 }
 
