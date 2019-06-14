@@ -14,7 +14,7 @@ cmd
 cmd.parse(process.argv);
 // 初始化脚本命令
 switch (cmd.skeleton) {
-    case 'csb':
-        require('../scripts/csb').default.init();
+    case 'utils':
+        require('../scripts/utils').default.init();
         break;
 }

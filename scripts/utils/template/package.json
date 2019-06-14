@@ -1,0 +1,36 @@
+{
+  "name": "",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "test": "jest --config .jest.js --runInBand",
+    "version": "standard-version -- --release-as"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "function"
+  ],
+  "author": "hayalen",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "latest",
+    "@types/node": "latest",
+    "cz-conventional-changelog": "^2.1.0",
+    "jest": "latest",
+    "ramda": "latest",
+    "standard-version": "^4.4.0",
+    "ts-jest": "latest",
+    "tslint": "latest",
+    "typescript": "latest"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
