@@ -4,3 +4,6 @@ src
 CHANGELOG.md
 .tslintignore
 tsconfig.json
+jsconfig.json
+.jest.js
+__tests__
