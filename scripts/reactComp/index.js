@@ -20,14 +20,14 @@ const failLoading = () => {
     spinner.fail('fail _(¦3」∠)_  \n');
 };
 const tips = `
-Initialize a empty project to develop a utils?
+Initialize a empty project to develop a react components?
 `;
 class Script {
     constructor() {
         this.dir = undefined;
         this.copy = () => {
             startLoading();
-            shell.exec(`cp -rf ${path.join(__dirname, './template')} ${this.dir}/utils`, code => {
+            shell.exec(`cp -rf ${path.join(__dirname, './template')} ${this.dir}/reactComp`, code => {
                 if (code !== 0) {
                     failLoading();
                     return log('copy fail');

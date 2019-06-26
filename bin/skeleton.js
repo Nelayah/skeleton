@@ -17,4 +17,7 @@ switch (cmd.skeleton) {
     case 'utils':
         require('../scripts/utils').default.init();
         break;
+    case 'react_comp':
+        require('../scripts/reactComp').default.init();
+        break;
 }
