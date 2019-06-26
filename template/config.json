@@ -1,7 +1,12 @@
 {
-	"csb": {
+	"utils": {
 		"keyword": "utils",
 		"name": "工具类",
 		"desc": "工具类 npm 脚手架"
-	}
+  },
+  "react_component": {
+    "keyword": "react",
+		"name": "react components",
+		"desc": "开发 react components 脚手架" 
+  }
 }
