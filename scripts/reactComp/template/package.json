@@ -6,14 +6,15 @@
   "scripts": {
     "test": "jest --config .jest.js",
     "dist": "NODE_ENV=production webpack --config ./webpack.config.js --progress",
-    "version": "standard-version -- --release-as"
+    "version": "standard-version -- --release-as",
+    "demo": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
     "url": ""
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "hayalen",
   "license": "MIT",
   "peerDependencies": {
@@ -26,23 +27,39 @@
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
     "@babel/runtime": "latest",
+    "@storybook/addon-actions": "^5.1.9",
+    "@storybook/addon-links": "^5.1.9",
+    "@storybook/addons": "^5.1.9",
+    "@storybook/react": "^5.1.9",
     "@types/jest": "latest",
     "@types/node": "latest",
+    "@types/ramda": "^0.26.10",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/recompose": "^0.30.6",
     "@types/webpack-env": "latest",
+    "autoprefixer": "^9.6.0",
     "babel-loader": "latest",
     "clean-webpack-plugin": "latest",
+    "css-loader": "^3.0.0",
     "cz-conventional-changelog": "latest",
     "enzyme": "latest",
     "enzyme-adapter-react-16": "latest",
     "jest": "latest",
     "jest-enzyme": "latest",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
     "react": "latest",
     "react-dom": "latest",
     "standard-version": "latest",
+    "style-loader": "^0.23.1",
+    "terser-webpack-plugin": "^1.3.0",
     "ts-jest": "latest",
     "ts-loader": "latest",
+    "tslint": "^5.18.0",
     "typescript": "latest",
     "webpack": "latest",
     "webpack-cli": "latest"
@@ -51,5 +68,12 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "ramda": "^0.26.1",
+    "recompose": "^0.30.0",
+    "render-if": "^0.1.1"
   }
 }

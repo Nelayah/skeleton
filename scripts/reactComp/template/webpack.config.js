@@ -1,34 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const path = require("path");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const TerserJSPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const pkg = require(path.join(process.cwd(), 'package.json'));
 const { NODE_ENV } = process.env;
 const CWD = process.cwd();
-const babelOptions = {
-	presets: [
-		['@babel/preset-env', {
-			modules: false,
-			targets: {
-				browsers: [
-					'last 2 versions',
-					'Firefox ESR',
-					'> 1%',
-					'ie >= 9',
-					'iOS >= 8',
-					'Android >= 4',
-				]
-			}
-		}],
-		'@babel/preset-react'
-	],
-	plugins: [
-		['@babel/plugin-transform-runtime']
-	]
-};
+
 exports.default = ({
 	mode: NODE_ENV,
-	entry: './index.js',
+	entry: './src/style/index.tsx',
 	externals: {
 		react: {
 			root: 'React',
@@ -41,12 +24,13 @@ exports.default = ({
 			commonjs2: 'react-dom',
 			commonjs: 'react-dom',
 			amd: 'react-dom'
-		}
+		},
+		typescript: 'typescript'
 	},
 	context: CWD,
 	output: {
 		filename: 'index.js',
-		path: path.join(CWD, 'lib'),
+		path: path.join(CWD, 'lib/style'),
 		libraryTarget: "umd",
 		library: pkg.name
 	},
@@ -59,32 +43,67 @@ exports.default = ({
 				test: /\.tsx?$/,
 				use: [
 					{
-						loader: 'babel-loader',
-						options: babelOptions
-					},
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', {modules: false}],
+                '@babel/preset-react'
+              ],
+              plugins: [
+                ['@babel/plugin-transform-runtime']
+              ]
+            }
+          },
 					{
-						loader: 'ts-loader',
-						options: {
-							transpileOnly: true
-						}
-					}
+            loader: 'ts-loader',
+            options: { transpileOnly: true }
+          }
 				]
-			}
+			},
+			{
+        test: /\.less$/,
+        exclude: /node_modules/,
+				use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'less-loader',
+          'postcss-loader',
+          'less-loader'
+        ]
+      },
+			{
+				test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      },
 		]
 	},
 	performance: {
 		hints: false
-	},
+  },
+  optimization: {
+    minimizer: [
+      new TerserJSPlugin({}),
+      new OptimizeCSSAssetsPlugin({})
+    ],
+  },
 	stats: {
 		modules: false,
 		moduleTrace: false,
 		children: false
 	},
 	plugins: [
-		new CleanWebpackPlugin(['lib/index.js'], {
-			root: CWD,
+		new CleanWebpackPlugin({
 			verbose: true,
-			dry: false
-		})
+      dry: false,
+      // cleanOnceBeforeBuildPatterns: ['lib/style/index.js']
+      cleanAfterEveryBuildPatterns: ['lib/style/index.js']
+		}),
+		new MiniCssExtractPlugin({
+      filename: 'index.css',
+      allChunks: true
+    })
 	]
 });
