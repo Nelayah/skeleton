@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Demo from '../lib/demo';
+import Example from '../lib/example';
 
-storiesOf('Demo', module)
-  .add('Demo', () => (
-    <Demo />
+storiesOf('Example', module)
+  .add('Example', () => (
+    <Example />
   ));
