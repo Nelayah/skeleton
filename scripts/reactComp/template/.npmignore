@@ -17,3 +17,6 @@ CHANGELOG.md
 .storybook
 stories
 webpack.config.js
+externals.d.ts
+.babelrc
+coverage
