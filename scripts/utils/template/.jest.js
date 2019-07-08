@@ -3,7 +3,10 @@ module.exports = {
   transform: {
     "^.+\\.tsx?$": "ts-jest"
   },
-  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+  transform: {
+    "^.+\\.(ts|tsx)?$": "ts-jest"
+  },
+  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|tsx)$",
   transformIgnorePatterns: [
     "node_modules"
   ],
