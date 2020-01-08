@@ -4,9 +4,9 @@
 		"name": "工具类",
 		"desc": "工具类 npm 脚手架"
   },
-  "react_component": {
-    "keyword": "react_comp",
-		"name": "react components",
-		"desc": "开发 react components 脚手架" 
+  "ReactComponent": {
+    "keyword": "ReactComponent",
+		"name": "React Component",
+		"desc": "开发 React Component 脚手架" 
   }
 }
