@@ -27,7 +27,7 @@ class Script {
         this.dir = undefined;
         this.copy = () => {
             startLoading();
-            shell.exec(`cp -rf ${path.join(__dirname, './template')} ${this.dir}/reactComp`, code => {
+            shell.exec(`cp -rf ${path.join(__dirname, './template')} ${this.dir}/ReactComponent`, code => {
                 if (code !== 0) {
                     failLoading();
                     return log('copy fail');
