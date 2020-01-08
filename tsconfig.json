@@ -15,7 +15,10 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "externals.d.ts"
+    "bin/skeleton.ts",
+    "template/index.ts",
+    "scripts/ReactComponent/index.ts",
+    "scripts/utils/index.ts"
   ],
   "exclude": [
     "node_modules",
