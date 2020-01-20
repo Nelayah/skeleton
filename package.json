@@ -32,11 +32,11 @@
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
-    "@types/node": "^11.11.0",
-    "@types/ramda": "^0.26.1",
-    "cz-conventional-changelog": "^2.1.0",
-    "standard-version": "^5.0.1",
-    "typescript": "^3.5.2"
+    "@types/node": "latest",
+    "@types/ramda": "latest",
+    "cz-conventional-changelog": "latest",
+    "standard-version": "latest",
+    "typescript": "latest"
   },
   "config": {
     "commitizen": {

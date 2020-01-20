@@ -20,10 +20,10 @@
   "devDependencies": {
     "@types/jest": "latest",
     "@types/node": "latest",
-    "cz-conventional-changelog": "^2.1.0",
+    "cz-conventional-changelog": "latest",
     "jest": "latest",
     "ramda": "latest",
-    "standard-version": "^4.4.0",
+    "standard-version": "latest",
     "ts-jest": "latest",
     "tslint": "latest",
     "typescript": "latest"
