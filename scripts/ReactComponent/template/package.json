@@ -19,8 +19,8 @@
   "author": "hayalen",
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=16.0.0",
-    "react-dom": ">=16.0.0"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/core": "latest",
@@ -56,6 +56,7 @@
     "mini-css-extract-plugin": "^0.7.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
+    "ramda": "^0.27.0",
     "react": "latest",
     "react-dom": "latest",
     "standard-version": "latest",
@@ -73,11 +74,5 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {
-    "moment": "^2.24.0",
-    "prop-types": "^15.7.2",
-    "ramda": "^0.26.1",
-    "recompose": "^0.30.0",
-    "render-if": "^0.1.1"
-  }
+  "dependencies": {}
 }
